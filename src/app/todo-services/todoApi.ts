@@ -18,6 +18,6 @@ export default class todoApi {
     }
 
     deleteTodo(todo:Todo){
-        this._todo.splice(this._todo.indexOf(todo));
+        this._todo.splice(this._todo.indexOf(todo),1);
     }
 }
