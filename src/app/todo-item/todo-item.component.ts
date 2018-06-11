@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../Model/Todo';
+import TodoService from '../todo-services/todoServices';
 
 @Component({
   selector: 'app-todo-item',
@@ -14,22 +15,25 @@ export class TodoItemComponent implements OnInit {
   @Output()
   todoChecked:EventEmitter<Todo> = new EventEmitter<Todo>();
 
+  textDecoration:string;
+
   selectTodo(){
     this.todoChecked.emit(this.todo);
   }
 
-  constructor() { }
+  constructor(private todoService:TodoService) { }
 
-
-  barreTitre(isCheck:boolean):string{
-    if(isCheck){
-      return "line-through";
-    }else{
-      return "none"
-    }
+  deleteTodo(){
+    this.todoService.deleteTodo(this.todo);
+  }
+  
+  barre(){
+    this.todo.isDone=!this.todo.isDone;
+    this.textDecoration=this.todo.isDone?"line-through":"none";
   }
 
   ngOnInit() {
+    this.textDecoration=this.todo.isDone?"line-through":"none";
   }
 
 }

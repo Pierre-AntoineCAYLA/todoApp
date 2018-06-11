@@ -6,6 +6,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import {FormsModule} from "@angular/forms";
+import todoApi from './todo-services/todoApi';
+import TodoService from './todo-services/todoServices';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [todoApi,TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../Model/Todo';
+import TodoService from '../todo-services/todoServices';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,19 +9,14 @@ import { Todo } from '../../Model/Todo';
 })
 export class TodoListComponent implements OnInit {
 
-  todoItem:Array<Todo>;
-  nbItem:number;
+  _todo:Array<Todo>;
 
-  constructor() { }
+  get todos():Array<Todo>{return this._todo}
+  set todos(todos:Array<Todo>){this._todo=todos}
 
-  ngOnInit() {
-    this.todoItem=[
-      new Todo("chose à faire",true),
-      new Todo("aller voir la doc",true),
-      new Todo("terminer app",false),
-
-    ]
-    this.nbItem = this.todoItem.length;
-  }
+  constructor(private todoService:TodoService) { }
+ngOnInit() {
+this.todoService.getTodo().then(value=>this._todo=value);
+}
 
 }
