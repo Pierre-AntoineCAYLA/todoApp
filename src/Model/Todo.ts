@@ -1,14 +1,13 @@
 export class Todo{
-   private _title:string;
-   private _isDone:boolean;
+   public title:string;
+   public isDone:boolean;
+   public id:number;
 
-    constructor(title:string,isDone:boolean){
-        this._title=title;
-        this._isDone= isDone;
+    constructor(_title:string,_isDone:boolean, _id?:number){
+        this.title=_title;
+        this.isDone= _isDone;
+        this.id=_id;
     }
 
-    get title() {return this._title}
-    get isDone() {return this._isDone}
-    set title(title:string){this._title = title}
-    set isDone(isDone:boolean){this._isDone= isDone}
+    
 }

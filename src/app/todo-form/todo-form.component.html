@@ -1,6 +1,9 @@
 <div>
-  <label for="mc">Sample checkbox</label>
+  <label for="mc">Nom Todo</label>
   <input type="text" name="tc" id="tc" [(ngModel)]="newTodo.title">
   <input type="checkbox" name="mc" id="mc" [(ngModel)]="newTodo.isDone">
-  <button (click)="handleClick()">Click me</button>
+  <button (click)="ajoutClick()">Ajouter</button>
+  <label for="mc"> ou modifier Todo: id</label>
+  <input type="number" name="tc" id="tc2" [(ngModel)]="newTodo.id">
+  <button (click)="modifClick()">modifier</button>
 </div>

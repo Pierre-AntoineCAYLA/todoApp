@@ -1,6 +1,6 @@
-
+<div *ngIf="_todo.length==0"><p>Vous n'avez pas de Todo</p></div> 
 <ul>
-  <li *ngFor="let todo of _todo">
+  <li *ngFor="let todo of (_todo|async)">
   <app-todo-item  [todo]="todo"></app-todo-item>
   </li>
 </ul>

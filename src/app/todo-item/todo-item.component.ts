@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../Model/Todo';
 import TodoService from '../todo-services/todoServices';
+import { ApiServiceService } from '../services/api-service.service';
+
 
 @Component({
   selector: 'app-todo-item',
@@ -12,19 +14,13 @@ export class TodoItemComponent implements OnInit {
   @Input()
   todo:Todo;
 
-  @Output()
-  todoChecked:EventEmitter<Todo> = new EventEmitter<Todo>();
-
   textDecoration:string;
 
-  selectTodo(){
-    this.todoChecked.emit(this.todo);
-  }
-
-  constructor(private todoService:TodoService) { }
+  constructor(private todoService:TodoService, private apiService:ApiServiceService) { }
 
   deleteTodo(){
-    this.todoService.deleteTodo(this.todo);
+    //this.todoService.deleteTodo(this.todo);
+    this.apiService.deleteTodo(this.todo).subscribe();
   }
   
   barre(){

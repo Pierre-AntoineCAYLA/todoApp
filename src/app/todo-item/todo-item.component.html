@@ -1,5 +1,5 @@
 
 <input (click)="barre()" #todoCheck type="checkbox"  [checked]="todo?.isDone" >
 <span  [ngStyle]="{'text-decoration':textDecoration}" (click)="deleteTodo()">  
-  {{todo?.title | uppercase}}
+  {{todo?.id}} {{todo?.title | uppercase}}
 </span>
